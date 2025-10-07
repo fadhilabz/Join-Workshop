@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WebDev Academy — Daftar Sekarang</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/src/output.css" />
+
+    <meta
+      name="description"
+      content="WebDev Academy — Kursus intensif web development: HTML, CSS, JavaScript. Batch baru mulai Februari 2025." />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind custom config
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0ea5e9", // sky-500
+              accent: "#2563eb", // blue-600
+            },
+            fontFamily: {
+              sans: ["Montserrat", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* small visual nicety */
+      .gradient-blob {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(14, 165, 233, 0.08));
+        backdrop-filter: blur(6px);
+      }
+    </style>
+  </head>
+  <body class="antialiased text-gray-800 bg-gray-50 font-sans">
+    <!-- Container -->
+    <div class="bg-white">
+      <header class="max-w-6xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img class="w-24" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo UKM" />
+          <a href="#" class="font-sans text-2xl sm:text-2xl lg:text-5xl font-extrabold">
+            UKM
+            <br />
+            START UP
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-2 rounded-xl  text-sm text-gray-600 bg-accent">
+          <a href="{{ url_for('pendaftaran') }}" class="text-lg flex gap-3 font-bold  px-6 py-3 rounded-md text-white hover:opacity-95">Daftar Sekarang
+          <img src="{{ url_for('static', filename='img/icons8-right-arrow-50.png') }}" alt="Panah kanan" class="w-7">
+          </a>
+        </nav>
+      </header>
+    </div>
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="py-5">
+          <div class="inline-flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">🚀 Batch Baru • Oktober 2025</span>
+            <span class="text-sm text-gray-500">Small class — Max 50 students</span>
+          </div>
+
+          <h1 class="text-xl sm:text-4xl lg:text-4xl font-extrabold leading-tight text-gray-900 mb-4 relative">
+            Mulai Karir Sebagai
+            <span class="relative inline-block text-accent">
+              <!-- Span dummy: selalu ambil ruang -->
+              <span class="invisible">Web Developer</span>
+              <!-- Span animasi: absolute di atas dummy -->
+              <span id="typing-text" class="absolute top-0 left-0 typing-cursor"></span>
+            </span>
+          </h1>
+
+          <p class="text-gray-700 mb-6">
+            Workshop Pengenalan Web Dasar ini dirancang untuk membantu mahasiswa memahami dasar-dasar pembuatan website. Peserta akan
+            belajar
+            <strong>HTML, CSS, dan JavaScript</strong>
+            secara praktis sehingga dapat membuat website sederhana dari nol.
+          </p>
+
+          <div class="flex gap-3 flex-wrap">
+            <a
+              id="daftar"
+              href="{{ url_for('pendaftaran') }}"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent text-white font-semibold shadow">
+              Daftar sekarang
+            </a>
+            <a href="#kurikulum" class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-gray-200 text-gray-700">
+              Lihat Kurikulum
+            </a>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm text-gray-600">
+            <div class="p-3 bg-white rounded-lg shadow-sm">
+              <div class="text-xs uppercase font-semibold text-gray-400">Duration</div>
+              <div class="font-bold">1 day</div>
+              <div class="text-xs">09.00 - Selesai</div>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow-sm">
+              <div class="text-xs uppercase font-semibold text-gray-400">Certificate</div>
+              <div class="font-bold">E-Sertifikat</div>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow-sm">
+              <div class="text-xs uppercase font-semibold text-gray-400">Class size</div>
+              <div class="font-bold">Max 50</div>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow-sm">
+              <div class="text-xs uppercase font-semibold text-gray-400">Fee</div>
+              <div class="font-bold">Gratis</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="rounded-2xl p-8 gradient-blob shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=5c7c4a3d0f4e0e6f8b0e9b3f5d04e1e3"
+              alt="coding"
+              class="w-full rounded-lg mb-6 object-cover h-56" />
+            <div class="bg-white p-4 rounded-lg">
+              <h3 class="font-semibold text-lg">Siap Membuat Website Pertamamu?</h3>
+              <p class="text-sm text-gray-600 mt-2">
+                Praktikum langsung, Belajar web untuk pemula, di bimbing pemateri, dan ditemani anggota UKM Start Up
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kurikulum -->
+    <section id="kurikulum" class="max-w-6xl mx-auto px-6 lg:px-8 mt-16">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold">Yang Akan Anda Pelajari</h2>
+        <p class="text-gray-600 mt-2">Kurikulum yang dirancang khusus untuk mengembangkan skill web development dari nol</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-lg mb-2">Belajar Dasar HTML</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Kuasai pondasi pembuatan website dengan mempelajari elemen-elemen dasar HTML untuk menyusun struktur halaman.
+          </p>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>Pengenalan tag HTML</li>
+            <li>Heading, paragraf, dan teks</li>
+            <li>Link dan gambar</li>
+          </ul>
+        </article>
+
+        <article class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-lg mb-2">Belajar Dasar CSS</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Pelajari cara mempercantik tampilan website dengan styling CSS, mulai dari warna, font, hingga layout dasar.
+          </p>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>Warna, background, dan font</li>
+            <li>Box model dan spacing (margin & padding)</li>
+            <li>Flexbox untuk layout sederhana</li>
+          </ul>
+        </article>
+
+        <article class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-lg mb-2">Belajar Dasar JavaScript</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Tambahkan interaktivitas pada website dengan mempelajari dasar-dasar JavaScript, dari manipulasi elemen hingga event handling.
+          </p>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>Pengenalan variabel, tipe data, dan operator</li>
+            <li>Fungsi dan kontrol alur (if, loop)</li>
+            <li>Event handling (click, input, submit)</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+
+    <!-- CTA strip -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 mt-16">
+      <div
+        class="rounded-xl p-8 bg-gradient-to-r from-sky-50 to-white shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="text-xl font-bold">Siap Memulai Perjalanan Anda?</h3>
+          <p class="text-gray-700">
+            Bergabunglah dengan batch terbaru, bimbingan langsung dari pemateri, dan kembangkan potensimu bersama UKM Start Up
+          </p>
+        </div>
+        <div class="flex gap-3">
+          <a href="#" class="px-5 py-3 rounded-md border">Lihat FAQ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 py-8 mt-16">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h4 class="font-bold text-white">WebDev Academy</h4>
+          <p class="text-sm text-gray-300 mt-2">Membangun masa depan developer Indonesia, satu baris kode pada satu waktu.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold">Quick links</h5>
+          <ul class="mt-2 text-sm text-gray-300 space-y-1">
+            <li><a href="#kurikulum">Kurikulum</a></li>
+            <li><a href="#form">Daftar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold">Keuntungan Mengikuti Workshop</h5>
+          <ul class="mt-2 text-sm text-gray-300 space-y-1">
+            <li>Sertifikat resmi setelah selesai workshop</li>
+            <li>Biodata & portofolio sederhana untuk latihan</li>
+            <li>Bertemu dan bersenang-senang dengan teman-teman UKM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="max-w-6xl mx-auto px-6 lg:px-8 mt-6 border-t border-gray-700 pt-6 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center">
+        <p>© 2025 WebDev Academy. All rights reserved.</p>
+        <div class="mt-4 md:mt-0 text-xs text-gray-400">Designed with ❤️ untuk calon developer Indonesia</div>
+      </div>
+    </footer>
+  </body>
+
+  <script src="typing.js"></script>
+</html>
